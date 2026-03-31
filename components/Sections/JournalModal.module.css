@@ -23,10 +23,12 @@
   max-width: 680px;
   width: 100%;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: hidden;
   position: relative;
   animation: slideUp var(--dur-slow) var(--ease-expo);
   box-shadow: 0 40px 80px rgba(28,28,30,0.3);
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes slideUp {
@@ -34,8 +36,15 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.modal::-webkit-scrollbar { width: 3px; }
-.modal::-webkit-scrollbar-thumb { background: var(--kin); border-radius: 2px; }
+.modalScroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 90vh;
+}
+
+.modalScroll::-webkit-scrollbar { width: 3px; }
+.modalScroll::-webkit-scrollbar-track { background: var(--washi-deep); }
+.modalScroll::-webkit-scrollbar-thumb { background: var(--kin); border-radius: 2px; }
 
 .close {
   position: sticky;
