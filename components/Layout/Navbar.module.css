@@ -1,0 +1,236 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.5rem 0;
+  transition: background 400ms var(--ease-silk),
+              padding 400ms var(--ease-silk),
+              backdrop-filter 400ms;
+}
+
+.nav.scrolled {
+  background: rgba(245, 240, 235, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+}
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.logoJP {
+  font-family: var(--font-jp);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--sumi);
+  letter-spacing: 0.05em;
+}
+
+.logoDivider {
+  color: var(--kin);
+  font-weight: 100;
+  font-size: 0.8rem;
+}
+
+.logoEN {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--sumi);
+  letter-spacing: 0.05em;
+}
+
+.links {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.link {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sumi-soft);
+  position: relative;
+  padding-bottom: 2px;
+  transition: color var(--dur-fast);
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--kin);
+  transition: width var(--dur-med) var(--ease-expo);
+}
+
+.link:hover { color: var(--sumi); }
+.link:hover::after { width: 100%; }
+
+[dir="rtl"] .link { letter-spacing: 0; }
+[dir="rtl"] .link::after { left: auto; right: 0; }
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.langBtn {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--kiri);
+  background: none;
+  border: 1px solid var(--kiri-light);
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  transition: all var(--dur-fast);
+}
+
+.langBtn:hover {
+  color: var(--sumi);
+  border-color: var(--kin);
+  background: rgba(201, 169, 110, 0.08);
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+.burger span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--sumi);
+  transform-origin: center;
+  transition: transform var(--dur-med) var(--ease-expo),
+              opacity var(--dur-med);
+}
+
+.burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* Mobile Menu */
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  background: var(--washi);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--gutter);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease-expo);
+}
+
+.mobileMenu.mobileOpen {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobileLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobileLinks li {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity var(--dur-slow) var(--ease-expo),
+              transform var(--dur-slow) var(--ease-expo);
+}
+
+.mobileLinks li.mobileVisible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+[dir="rtl"] .mobileLinks li {
+  transform: translateX(20px);
+}
+[dir="rtl"] .mobileLinks li.mobileVisible {
+  transform: translateX(0);
+}
+
+.mobileLinks a {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 300;
+  color: var(--sumi);
+  line-height: 1.3;
+  transition: color var(--dur-fast);
+}
+
+.mobileLinks a:hover { color: var(--kin); }
+
+.mobileNum {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--kin);
+  align-self: flex-start;
+  margin-top: 0.8em;
+}
+
+.mobileLang {
+  margin-top: 3rem;
+}
+
+.mobileLang button {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--kiri);
+  border: 1px solid var(--kiri-light);
+  padding: 0.5rem 1.5rem;
+  border-radius: 40px;
+  background: none;
+  transition: all var(--dur-fast);
+}
+
+.mobileLang button:hover {
+  color: var(--sumi);
+  border-color: var(--kin);
+}
+
+@media (max-width: 900px) {
+  .links { display: none; }
+  .burger { display: flex; }
+}

@@ -1,0 +1,144 @@
+.testimonials { background: var(--washi); }
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--sumi);
+  margin-bottom: 4rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem;
+  align-items: start;
+}
+
+.quoteArea {
+  position: relative;
+  min-height: 280px;
+}
+
+.quote {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-slow) var(--ease-expo),
+              transform var(--dur-slow) var(--ease-expo);
+  pointer-events: none;
+}
+
+.quoteActive {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+  position: relative;
+}
+
+.openQuote {
+  font-family: var(--font-serif);
+  font-size: 6rem;
+  color: var(--kin);
+  opacity: 0.3;
+  line-height: 1;
+  display: block;
+  margin-bottom: -2rem;
+}
+
+.quoteText {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--sumi);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+[dir="rtl"] .quoteText { font-style: normal; }
+
+.quoteAuthor {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.authorName {
+  font-weight: 400;
+  color: var(--sumi);
+  font-size: 0.9rem;
+}
+
+.authorRole {
+  font-size: 0.8rem;
+  color: var(--kiri);
+}
+
+.authorLoc {
+  font-size: 0.75rem;
+  color: var(--kin);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+}
+
+.dots {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 200px;
+}
+
+.dotBtn {
+  text-align: left;
+  padding: 1rem 1.25rem;
+  background: var(--neu-bg);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow var(--dur-med);
+}
+
+[dir="rtl"] .dotBtn { text-align: right; }
+
+.dotBtn:hover {
+  box-shadow: var(--neu-inset);
+}
+
+.dotActive {
+  box-shadow: var(--neu-inset) !important;
+}
+
+.dotName {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--sumi);
+  margin-bottom: 0.2rem;
+}
+
+.dotLoc {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--kiri);
+  letter-spacing: 0.05em;
+}
+
+.dotBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--kin);
+  transition: width var(--dur-slow) var(--ease-expo);
+}
+
+.dotActive .dotBar { width: 100%; }
+
+@media (max-width: 768px) {
+  .layout { grid-template-columns: 1fr; gap: 2rem; }
+  .quoteArea { min-height: 320px; }
+  .dots { flex-direction: row; flex-wrap: wrap; min-width: unset; }
+}

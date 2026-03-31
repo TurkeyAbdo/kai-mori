@@ -1,0 +1,51 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border-radius: 60px;
+  transition: all var(--dur-med) var(--ease-expo),
+              transform var(--dur-slow) var(--ease-expo);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+[dir="rtl"] .btn { letter-spacing: 0; }
+
+.outline {
+  background: transparent;
+  color: var(--sumi);
+  border: 1px solid var(--sumi);
+}
+
+.outline:hover {
+  background: var(--sumi);
+  color: var(--washi);
+}
+
+.solid {
+  background: var(--sumi);
+  color: var(--washi);
+  border: 1px solid var(--sumi);
+}
+
+.solid:hover {
+  background: transparent;
+  color: var(--sumi);
+}
+
+.gold {
+  background: var(--kin);
+  color: var(--washi);
+  border: 1px solid var(--kin);
+}
+
+.gold:hover {
+  background: transparent;
+  color: var(--kin);
+}

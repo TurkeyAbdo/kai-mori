@@ -1,49 +1,177 @@
+/* ========================
+   KAI MORI — DESIGN SYSTEM
+   Minimal Japanese × Neumorphism
+   ======================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Sans+JP:wght@300;400&family=Noto+Naskh+Arabic:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --washi:      #F5F0EB;
+  --washi-deep: #EDE6DC;
+  --sumi:       #1C1C1E;
+  --sumi-soft:  #3A3A3C;
+  --kiri:       #8C8C8C;
+  --kiri-light: #B8B3AC;
+  --kin:        #C9A96E;
+  --kin-light:  #E2C896;
+  --take:       #4A5240;
+
+  --neu-bg:           #EDE8E3;
+  --neu-shadow-dark:  #D4CFC9;
+  --neu-shadow-light: #FFFFFF;
+  --neu-shadow:    8px 8px 20px var(--neu-shadow-dark), -8px -8px 20px var(--neu-shadow-light);
+  --neu-shadow-sm: 4px 4px 10px var(--neu-shadow-dark), -4px -4px 10px var(--neu-shadow-light);
+  --neu-inset:     inset 4px 4px 10px var(--neu-shadow-dark), inset -4px -4px 10px var(--neu-shadow-light);
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'DM Sans', system-ui, sans-serif;
+  --font-jp:    'Noto Sans JP', sans-serif;
+  --font-ar:    'Noto Naskh Arabic', serif;
+
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  2rem;
+  --space-lg:  4rem;
+  --space-xl:  8rem;
+  --space-2xl: 12rem;
+
+  --ease-silk: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:  200ms;
+  --dur-med:   400ms;
+  --dur-slow:  700ms;
+  --dur-xslow: 1200ms;
+
+  --max-w:    1400px;
+  --gutter:   clamp(1.5rem, 5vw, 4rem);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 40px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-  height: 100%;
-}
+html { font-size: 16px; scroll-behavior: smooth; height: 100%; }
 
-html,
 body {
-  max-width: 100vw;
+  background: var(--washi);
+  color: var(--sumi);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
   overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+body[dir="rtl"] { font-family: var(--font-ar); }
+
+::selection { background: var(--kin); color: var(--washi); }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--washi-deep); }
+::-webkit-scrollbar-thumb { background: var(--kin); border-radius: 2px; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4 {
+  font-family: var(--font-ar);
+  letter-spacing: 0;
+  line-height: 1.4;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.text-jp { font-family: var(--font-jp); font-weight: 300; }
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section { padding: var(--space-xl) 0; }
+
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--kin);
+  margin-bottom: var(--space-md);
+  display: block;
+}
+
+[dir="rtl"] .section-label {
+  letter-spacing: 0;
+  font-family: var(--font-ar);
+}
+
+.neu {
+  background: var(--neu-bg);
+  box-shadow: var(--neu-shadow);
+  border-radius: var(--radius-lg);
+}
+
+.neu-sm {
+  background: var(--neu-bg);
+  box-shadow: var(--neu-shadow-sm);
+  border-radius: var(--radius-md);
+}
+
+.neu-inset {
+  background: var(--neu-bg);
+  box-shadow: var(--neu-inset);
+  border-radius: var(--radius-md);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--dur-xslow) var(--ease-expo),
+              transform var(--dur-xslow) var(--ease-expo);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+.reveal-delay-5 { transition-delay: 500ms; }
+
+* { cursor: none; }
+@media (pointer: coarse) { * { cursor: auto; } }
+
+.gold-line {
+  width: 40px;
+  height: 1px;
+  background: var(--kin);
+  margin: var(--space-md) 0;
+}
+
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
+  .reveal { opacity: 1; transform: none; }
 }
