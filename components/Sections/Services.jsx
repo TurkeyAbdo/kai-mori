@@ -25,7 +25,7 @@ export default function Services() {
           {t.items.map((item, i) => (
             <div
               key={item.id}
-              className={`${styles.card} ${styles[`size_${item.size}`]} ${active === item.id ? styles.cardActive : ''} neu reveal`}
+              className={`${styles.card} ${styles[`card_${item.id}`]} ${active === item.id ? styles.cardActive : ''} neu reveal`}
               style={{ transitionDelay: `${i * 80}ms` }}
               onMouseEnter={() => setActive(item.id)}
               onMouseLeave={() => setActive(null)}

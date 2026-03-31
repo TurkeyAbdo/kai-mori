@@ -4,6 +4,7 @@ import LangContext from '@/context/LangContext';
 import { content } from '@/data/content';
 import useReveal from '@/components/UI/useReveal';
 import EmptyState from '@/components/UI/EmptyState';
+import PortfolioModal from './PortfolioModal';
 import styles from './Portfolio.module.css';
 
 export default function Portfolio() {
@@ -11,6 +12,7 @@ export default function Portfolio() {
   const t = content[lang].portfolio;
   const sectionRef = useReveal();
   const [hovered, setHovered] = useState(null);
+  const [selected, setSelected] = useState(null);
 
   return (
     <section id="portfolio" className={`${styles.portfolio} section`} ref={sectionRef}>
@@ -32,6 +34,8 @@ export default function Portfolio() {
                 style={{ transitionDelay: `${i * 100}ms` }}
                 onMouseEnter={() => setHovered(item.id)}
                 onMouseLeave={() => setHovered(null)}
+                onClick={() => setSelected(item)}
+                data-cursor
               >
                 {/* Placeholder image */}
                 <div className={styles.cardImage}>
@@ -61,6 +65,10 @@ export default function Portfolio() {
           </div>
         )}
       </div>
+
+      {selected && (
+        <PortfolioModal project={selected} lang={lang} onClose={() => setSelected(null)} />
+      )}
     </section>
   );
 }
