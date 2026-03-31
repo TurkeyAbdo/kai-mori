@@ -144,7 +144,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
               transform var(--dur-xslow) var(--ease-expo);
 }
 
-.reveal.revealed {
+.reveal[data-revealed="true"] {
   opacity: 1;
   transform: translateY(0);
 }
